@@ -16,8 +16,9 @@ spaces=`wc -w <<< "$colours"`
 spaces="$((spaces+1))"
 function getChar(){
     return_val="REE"
-    c='a'
+    c='0'
     c='\u2588'
+    c='0'
     j=0
     tmp="$((RANDOM%5))"
     for i in "${colours[@]}"; do
@@ -25,8 +26,22 @@ function getChar(){
         j="$((j+1))"
         #    continue
         #echo $j
-        if [ $tmp -lt $j ]; then
-            return_val="${i}$c${NC}"
+        #if [ $tmp -lt $j ]; then
+        if [ $tmp -lt 100 ]; then
+            #return_val="${i}$c${NC}"
+            abc="$((RANDOM%10))"
+
+            if [ $abc -lt 1  ]; then
+                d='0'
+            else if [ $abc -lt 2  ]; then
+                d='1'
+            else
+                d=' '
+            fi
+            fi
+            return_val="${i}$d${NC}"
+
+            #return_val="$c"
             #echo "MEEP $return_val"
             break
         fi
@@ -66,6 +81,6 @@ function getChar(){
                                 s=$s"$return_val"
                             done
                             printf  "$s"
-                            #sleep 0.01
+                            sleep 0.01
                         done
                     done
