@@ -1,32 +1,5 @@
 #!/usr/local/bin/zsh
 
-function parseArgs(){
-    for i in "$@"
-    do
-        case $i in
-            -e=*|--extension=*)
-                EXTENSION="${i#*=}"
-                shift # past argument=value
-                ;;
-            -s=*|--searchpath=*)
-                SEARCHPATH="${i#*=}"
-                shift # past argument=value
-                ;;
-            -l=*|--lib=*)
-                LIBPATH="${i#*=}"
-                shift # past argument=value
-                ;;
-            --default)
-                DEFAULT=YES
-                shift # past argument with no value
-                ;;
-            *)
-                # unknown option
-                ;;
-        esac
-    done
-}
-
 RED='\033[1;31m'
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
@@ -35,28 +8,24 @@ PURPLE='\033[0;35m'
 PINK='\033[1;35m'
 NC='\033[0m' # No Color
 COLOURS_TO_CHOOSE="RED GREEN"
-COLOURS_TO_CHOOSE=$1
+COLOURS_TO_CHOOSE=${1:-"RED GREEN BLUE PURPLE PINK YELLOW"}
 CHARS="01 "
-CHARS=$2
+CHARS=${2:-"01 "}
 num_chars=${#CHARS}
-DO_BLOCKS=$3
+DO_BLOCKS=${3:-0}
 if [ $DO_BLOCKS  -eq 1 ]; then
     num_chars=1
     CHARS='\u2588'
 fi
-#echo $1
-#echo $2
 setopt shwordsplit
 declare -a colours
 for one_thing in $COLOURS_TO_CHOOSE; do
      s=`eval echo $"$one_thing"`
-     #echo "$s""er"
      colours+=($s)
 done
 unsetopt shwordsplit
 #colours=($RED $BLUE $GREEN $YELLOW $PURPLE $PINK)
 spaces=`wc -w <<< "$colours"`
-echo $spaces"SPAES"
 #spaces="$((spaces+1))"
 function getChar(){
     return_val="REE"
