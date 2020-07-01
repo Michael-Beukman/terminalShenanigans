@@ -8,14 +8,20 @@ It currently works using zsh (tested on Mac)
 Default
 
 
-bash```./configurable.sh```
+```
+./configurable.sh
+```
 
 With options (uses red, pink, blue, yellow, characters - and +)
 
 
-bash```./configurable.sh "RED PINK BLUE YELLOW" '-+'  0```
+```
+./configurable.sh "RED PINK BLUE YELLOW" '-+'  0
+```
 
 With options (uses red, pink, blue, yellow, uses filled in unicode blocks)
 
 
-bash```./configurable.sh "RED PINK BLUE YELLOW" ''  1```
+```
+./configurable.sh "RED PINK BLUE YELLOW" ''  1
+```
