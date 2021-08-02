@@ -1,3 +1,0 @@
-RED='meep'
-S="RED"
-eval echo $"$S"
